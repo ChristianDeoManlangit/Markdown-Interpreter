@@ -1,4 +1,11 @@
 import React, { useRef, useEffect, useState } from "react";
+import Prism from 'prismjs';
+import 'prismjs/components/prism-markdown';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-python';
+import 'prismjs/components/prism-bash';
 
 interface EditorPanelProps {
   markdown: string;
@@ -12,7 +19,7 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width, fo
   const lineNumbersRef = useRef<HTMLDivElement>(null);
   const [lineCount, setLineCount] = useState(1);
 
-  // Update line numbers when markdown content changes
+  // Update line numbers and apply syntax highlighting when markdown content changes
   useEffect(() => {
     if (markdown) {
       const lines = markdown.split('\n').length;
@@ -20,6 +27,11 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width, fo
     } else {
       setLineCount(1);
     }
+    
+    // Apply syntax highlighting with Prism.js
+    setTimeout(() => {
+      Prism.highlightAll();
+    }, 0);
   }, [markdown]);
 
   // Sync scrolling between textarea and line numbers
@@ -75,7 +87,7 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width, fo
         {/* Line Numbers */}
         <div 
           ref={lineNumbersRef}
-          className="flex-none w-12 bg-gray-100 dark:bg-gray-800 py-2 text-right text-slate-500 dark:text-slate-400 font-mono select-none overflow-y-auto" 
+          className="flex-none w-12 bg-gray-100 dark:bg-gray-800 py-2 text-right text-slate-500 dark:text-slate-400 font-mono select-none overflow-hidden" 
           id="line-numbers"
           style={{
             fontSize: `${Math.max(fontSize - 2, 10)}px`
@@ -88,18 +100,33 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width, fo
         
         {/* Actual Editor */}
         <div className="flex-1 relative overflow-auto">
-          <textarea 
-            ref={textareaRef}
-            id="markdown-editor" 
-            className="w-full h-full resize-none p-2 outline-none font-mono leading-relaxed text-slate-800 dark:text-slate-200 caret-slate-800 dark:caret-white bg-white dark:bg-gray-900"
-            placeholder="Type your Markdown here..."
-            value={markdown}
-            onChange={(e) => onChange(e.target.value)}
-            onKeyDown={handleKeyDown}
-            style={{ 
-              fontSize: `${fontSize}px`
-            }}
-          />
+          <div className="absolute inset-0 w-full">
+            {/* Syntax highlighting layer */}
+            <pre className="absolute inset-0 m-0 p-2 w-full h-full pointer-events-none font-mono" 
+                style={{ 
+                  zIndex: 1, 
+                  fontSize: `${fontSize}px`
+                }}>
+              <code className="language-markdown">
+                {markdown || " "}
+              </code>
+            </pre>
+
+            {/* Input textarea */}
+            <textarea 
+              ref={textareaRef}
+              id="markdown-editor" 
+              className="absolute inset-0 w-full h-full resize-none p-2 outline-none font-mono leading-relaxed caret-slate-800 dark:caret-white bg-transparent text-transparent"
+              placeholder="Type your Markdown here..."
+              value={markdown}
+              onChange={(e) => onChange(e.target.value)}
+              onKeyDown={handleKeyDown}
+              style={{ 
+                fontSize: `${fontSize}px`,
+                caretColor: "currentColor"
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>
