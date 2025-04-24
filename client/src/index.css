@@ -266,6 +266,34 @@ pre[class*="language-"] {
   margin: 0 auto;
   word-wrap: break-word;
   overflow-y: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.markdown-preview > * {
+  width: 100%;
+}
+
+.markdown-preview a {
+  display: inline-block;
+  margin: 0 0.25rem;
+}
+
+.markdown-preview p {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.25rem 0;
+  flex-wrap: wrap;
+}
+
+.markdown-preview img {
+  display: inline-block;
+  margin: 0 0.25rem;
+  vertical-align: middle;
 }
 
 .markdown-preview > *:first-child {
