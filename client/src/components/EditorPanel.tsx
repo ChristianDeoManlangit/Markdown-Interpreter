@@ -116,12 +116,12 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width, fo
         </div>
 
         <div className="flex-1 relative overflow-hidden">
-          <div className="editor-highlight absolute top-0 left-0 w-full h-full p-2 pointer-events-none font-mono overflow-auto whitespace-pre leading-relaxed" style={{ fontSize: `${fontSize}px`, lineHeight: '1.5' }}></div>
+          <div className="editor-highlight absolute top-0 left-0 right-0 bottom-0 p-2 pointer-events-none font-mono overflow-auto whitespace-pre-wrap break-words" style={{ fontSize: `${fontSize}px`, lineHeight: '1.5' }}></div>
           <textarea 
             ref={textareaRef}
             id="markdown-editor" 
-            className="w-full h-full resize-none p-2 outline-none font-mono leading-relaxed text-slate-800 dark:text-slate-200 caret-slate-800 dark:caret-white bg-transparent overflow-auto"
-            style={{ fontSize: `${fontSize}px`, lineHeight: '1.5' }}
+            className="w-full h-full resize-none p-2 outline-none font-mono leading-relaxed bg-transparent overflow-auto relative z-10"
+            style={{ fontSize: `${fontSize}px`, lineHeight: '1.5', color: 'inherit' }}
             placeholder="Type your Markdown here..."
             value={markdown}
             onChange={(e) => onChange(e.target.value)}
