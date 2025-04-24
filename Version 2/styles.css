@@ -1,52 +1,232 @@
 
+/* Base Styles */
+:root {
+    --font-size: 14px;
+}
+
+/* Editor Styles */
+#markdown-editor {
+    font-size: var(--font-size);
+    tab-size: 4;
+    white-space: pre;
+    line-height: 1.5;
+}
+
+#lineNumbers {
+    font-size: calc(var(--font-size) - 2px);
+    line-height: 1.5;
+}
+
+/* Resizer Styles */
+#resizer:hover, #resizer.dragging {
+    background-color: #3b82f6 !important;
+}
+
 /* Markdown Preview Styles */
 .markdown-preview {
-    @apply prose prose-sm sm:prose lg:prose-lg dark:prose-invert max-w-none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: var(--font-size);
+    line-height: 1.5;
+    color: #24292e;
+}
+
+.dark .markdown-preview {
+    color: #c9d1d9;
 }
 
 .markdown-preview h1 {
-    @apply text-2xl font-semibold border-b border-gray-200 dark:border-gray-700 pb-2 mb-4 mt-0;
+    font-size: 2em;
+    border-bottom: 1px solid #eaecef;
+    padding-bottom: 0.3em;
+    margin: 0.67em 0;
 }
 
 .markdown-preview h2 {
-    @apply text-xl font-semibold border-b border-gray-200 dark:border-gray-700 pb-2 mt-6 mb-3;
+    font-size: 1.5em;
+    border-bottom: 1px solid #eaecef;
+    padding-bottom: 0.3em;
+    margin: 0.83em 0;
 }
 
 .markdown-preview h3 {
-    @apply text-lg font-semibold mt-4 mb-2;
+    font-size: 1.25em;
+    margin: 1em 0;
+}
+
+.markdown-preview h4 {
+    font-size: 1em;
+    margin: 1.33em 0;
+}
+
+.markdown-preview h5 {
+    font-size: 0.875em;
+    margin: 1.67em 0;
+}
+
+.markdown-preview h6 {
+    font-size: 0.85em;
+    color: #6a737d;
+    margin: 2.33em 0;
 }
 
 .markdown-preview p {
-    @apply mb-4 leading-relaxed;
+    margin: 0 0 16px;
 }
 
 .markdown-preview ul,
 .markdown-preview ol {
-    @apply mb-4 pl-6;
-    display: block;
+    padding-left: 2em;
+    margin: 0 0 16px;
 }
 
 .markdown-preview ul {
-    @apply list-disc;
+    list-style: disc;
 }
 
 .markdown-preview ol {
-    @apply list-decimal;
+    list-style: decimal;
+}
+
+.markdown-preview li {
+    margin: 0.25em 0;
 }
 
 .markdown-preview code {
-    @apply font-mono text-sm bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    padding: 0.2em 0.4em;
+    background-color: rgba(27, 31, 35, 0.05);
+    border-radius: 3px;
+    font-size: 85%;
 }
 
 .markdown-preview pre {
-    @apply bg-gray-100 dark:bg-gray-800 p-4 rounded-md my-4 overflow-x-auto;
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f6f8fa;
+    border-radius: 3px;
+    margin: 0 0 16px;
+}
+
+.markdown-preview pre code {
+    padding: 0;
+    background-color: transparent;
+}
+
+.markdown-preview blockquote {
+    padding: 0 1em;
+    color: #6a737d;
+    border-left: 0.25em solid #dfe2e5;
+    margin: 0 0 16px;
+}
+
+.markdown-preview table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin: 0 0 16px;
+    width: 100%;
+}
+
+.markdown-preview table th,
+.markdown-preview table td {
+    padding: 6px 13px;
+    border: 1px solid #dfe2e5;
+}
+
+.markdown-preview table th {
+    font-weight: 600;
+    background-color: #f6f8fa;
+}
+
+.markdown-preview img {
+    max-width: 100%;
+    margin: 0 0 16px;
+}
+
+.markdown-preview hr {
+    height: 0.25em;
+    padding: 0;
+    margin: 24px 0;
+    background-color: #e1e4e8;
+    border: 0;
 }
 
 .markdown-preview a {
-    @apply text-blue-500 hover:underline;
+    color: #0366d6;
+    text-decoration: none;
 }
 
-/* Dark mode */
-.dark {
-    @apply bg-gray-900 text-white;
+.markdown-preview a:hover {
+    text-decoration: underline;
+}
+
+/* Dark Mode Overrides */
+.dark .markdown-preview code {
+    background-color: rgba(240, 246, 252, 0.15);
+}
+
+.dark .markdown-preview pre {
+    background-color: #161b22;
+}
+
+.dark .markdown-preview table th {
+    background-color: #161b22;
+}
+
+.dark .markdown-preview blockquote {
+    color: #8b949e;
+    border-left-color: #30363d;
+}
+
+.dark .markdown-preview hr {
+    background-color: #30363d;
+}
+
+.dark .markdown-preview a {
+    color: #58a6ff;
+}
+
+/* Syntax Highlighting Overrides */
+.dark .token.comment,
+.dark .token.prolog,
+.dark .token.doctype,
+.dark .token.cdata {
+    color: #8b949e;
+}
+
+.dark .token.punctuation {
+    color: #c9d1d9;
+}
+
+.dark .token.string,
+.dark .token.atrule,
+.dark .token.attr-value {
+    color: #a5d6ff;
+}
+
+.dark .token.property,
+.dark .token.tag {
+    color: #7ee787;
+}
+
+.dark .token.boolean,
+.dark .token.number {
+    color: #ff7b72;
+}
+
+.dark .token.selector,
+.dark .token.attr-name {
+    color: #ffa657;
+}
+
+.dark .token.entity,
+.dark .token.url,
+.dark .token.symbol,
+.dark .token.deleted {
+    color: #79c0ff;
+}
+
+.dark .token.function {
+    color: #d2a8ff;
 }

@@ -8,6 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prismjs/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prismjs/1.29.0/themes/prism.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
 </head>
@@ -25,6 +27,30 @@
                 </span>
             </div>
             <div class="flex items-center space-x-4">
+                <!-- Font Size Controls -->
+                <div class="flex items-center space-x-2">
+                    <button id="decreaseFontSize" class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">A-</button>
+                    <span id="currentFontSize" class="text-sm text-gray-600 dark:text-gray-400">14px</span>
+                    <button id="increaseFontSize" class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">A+</button>
+                </div>
+
+                <!-- File Operations -->
+                <div class="flex items-center space-x-2">
+                    <button id="newFile" class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
+                        New
+                    </button>
+                    <button id="loadFile" class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
+                        Load
+                    </button>
+                    <button id="saveMarkdown" class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
+                        Save .md
+                    </button>
+                    <button id="saveZip" class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
+                        Save .zip
+                    </button>
+                </div>
+
+                <!-- Theme Toggle -->
                 <button id="themeToggle" class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
@@ -35,11 +61,24 @@
     </nav>
 
     <div class="flex-1 flex" id="editor-container">
-        <div class="w-1/2 border-r border-gray-200 dark:border-gray-700">
-            <textarea id="markdown-editor" class="w-full h-full p-4 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-mono resize-none outline-none" placeholder="Type your Markdown here..."></textarea>
+        <div class="w-1/2 flex flex-col border-r border-gray-200 dark:border-gray-700">
+            <!-- Line Numbers and Editor Container -->
+            <div class="flex-1 flex">
+                <div id="lineNumbers" class="w-12 bg-gray-100 dark:bg-gray-800 py-4 text-right text-gray-500 select-none font-mono"></div>
+                <textarea 
+                    id="markdown-editor" 
+                    class="flex-1 p-4 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-mono resize-none outline-none"
+                    placeholder="Type your Markdown here..."
+                    spellcheck="false"
+                ></textarea>
+            </div>
         </div>
-        <div class="w-1/2 p-4">
-            <div id="preview" class="markdown-preview"></div>
+        
+        <!-- Resizer -->
+        <div id="resizer" class="w-1 cursor-col-resize bg-gray-200 dark:bg-gray-700 hover:bg-blue-500"></div>
+        
+        <div class="w-1/2">
+            <div id="preview" class="markdown-preview p-4 h-full overflow-auto"></div>
         </div>
     </div>
 
@@ -49,6 +88,7 @@
         </p>
     </footer>
 
+    <input type="file" id="fileInput" accept=".md" class="hidden">
     <script src="app.js"></script>
 </body>
 </html>
