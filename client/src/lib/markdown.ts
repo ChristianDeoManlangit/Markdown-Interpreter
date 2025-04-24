@@ -4,11 +4,8 @@ import { marked } from "marked";
 marked.setOptions({
   breaks: true,        // Convert line breaks to <br>
   gfm: true,           // Use GitHub Flavored Markdown
-  mangle: false,       // Don't escape HTML
-  sanitize: false,     // Don't sanitize HTML
   smartLists: true,    // Use smarter list behavior
   smartypants: true,   // Use smart typography
-  xhtml: true,         // Close void tags with />
   highlight: function(code: string) {
     return code;       // In a real app, we would use highlight.js or prism.js here
   }
