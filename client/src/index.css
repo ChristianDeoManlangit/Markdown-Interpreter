@@ -258,13 +258,22 @@ pre[class*="language-"] {
 
 /* Preview Panel Styling */
 .markdown-preview {
-  @apply px-5 py-5 text-slate-800 dark:text-slate-200;
+  @apply px-8 py-6 text-slate-800 dark:text-slate-200;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-  line-height: 1.6;
-  word-wrap: break-word;
+  line-height: 1.5;
   width: 100%;
-  height: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  word-wrap: break-word;
   overflow-y: auto;
+}
+
+.markdown-preview > *:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-preview > *:last-child {
+  margin-bottom: 0 !important;
 }
 
 .markdown-preview h1 {
