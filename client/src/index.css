@@ -258,19 +258,14 @@ pre[class*="language-"] {
 
 /* Preview Panel Styling */
 .markdown-preview {
-  @apply px-8 py-6 text-slate-800 dark:text-slate-200;
+  @apply px-6 py-4 text-slate-800 dark:text-slate-200;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   line-height: 1.5;
   width: 100%;
-  max-width: 980px;
+  max-width: 900px;
   margin: 0 auto;
   word-wrap: break-word;
   overflow-y: auto;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
 }
 
 .markdown-preview > * {
@@ -278,16 +273,11 @@ pre[class*="language-"] {
 }
 
 .markdown-preview a {
-  display: inline-block;
-  margin: 0 0.25rem;
+  text-decoration: none;
 }
 
 .markdown-preview p {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 0.25rem 0;
-  flex-wrap: wrap;
+  margin: 0 0 16px;
 }
 
 .markdown-preview img {
@@ -305,36 +295,36 @@ pre[class*="language-"] {
 }
 
 .markdown-preview h1 {
-  @apply text-3xl font-bold border-b border-gray-200 dark:border-gray-700 pb-2 mb-5 mt-0;
+  @apply text-2xl font-semibold border-b border-gray-200 dark:border-gray-700 pb-2 mb-4 mt-0;
 }
 
 .markdown-preview h2 {
-  @apply text-2xl font-bold border-b border-gray-200 dark:border-gray-700 pb-2 mt-5 mb-3;
+  @apply text-xl font-semibold border-b border-gray-200 dark:border-gray-700 pb-2 mt-6 mb-3;
 }
 
 .markdown-preview h3 {
-  @apply text-xl font-bold mt-4 mb-2;
+  @apply text-lg font-semibold mt-4 mb-2;
 }
 
 .markdown-preview h4 {
-  @apply text-lg font-bold mt-4 mb-2;
+  @apply text-base font-semibold mt-4 mb-2;
 }
 
 .markdown-preview h5 {
-  @apply font-bold mt-4 mb-2;
+  @apply font-semibold mt-4 mb-2;
 }
 
 .markdown-preview h6 {
-  @apply font-bold text-sm text-gray-600 dark:text-gray-400 mt-4 mb-2;
+  @apply font-semibold text-sm text-gray-600 dark:text-gray-400 mt-4 mb-2;
 }
 
 .markdown-preview p {
-  @apply my-4 leading-relaxed;
+  @apply mb-4 leading-relaxed;
 }
 
 .markdown-preview ul,
 .markdown-preview ol {
-  @apply my-4 pl-8;
+  @apply mb-4 pl-6;
   display: block;
 }
 
