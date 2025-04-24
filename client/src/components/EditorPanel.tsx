@@ -2,7 +2,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import Prism from "prismjs";
 import "prismjs/components/prism-markdown";
-import "prismjs/themes/prism-tomorrow.css";
+import "prismjs/components/prism-markup";
 
 interface EditorPanelProps {
   markdown: string;
@@ -13,7 +13,6 @@ interface EditorPanelProps {
 
 const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width, fontSize = 14 }) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const preRef = useRef<HTMLPreElement>(null);
   const lineNumbersRef = useRef<HTMLDivElement>(null);
   const [lineCount, setLineCount] = useState(1);
 
@@ -29,29 +28,20 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width, fo
   useEffect(() => {
     const textarea = textareaRef.current;
     const lineNumbers = lineNumbersRef.current;
-    const pre = preRef.current;
 
-    if (!textarea || !lineNumbers || !pre) return;
+    if (!textarea || !lineNumbers) return;
 
     const handleScroll = () => {
-      lineNumbers.scrollTop = textarea.scrollTop;
-      pre.scrollTop = textarea.scrollTop;
-      pre.scrollLeft = textarea.scrollLeft;
+      if (lineNumbers) {
+        lineNumbers.scrollTop = textarea.scrollTop;
+      }
     };
 
     textarea.addEventListener('scroll', handleScroll);
-    return () => textarea.removeEventListener('scroll', handleScroll);
+    return () => {
+      textarea.removeEventListener('scroll', handleScroll);
+    };
   }, []);
-
-  useEffect(() => {
-    if (preRef.current) {
-      const code = preRef.current.querySelector('code');
-      if (code) {
-        code.textContent = markdown;
-        Prism.highlightElement(code);
-      }
-    }
-  }, [markdown]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Tab') {
@@ -84,6 +74,12 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width, fo
     }
   };
 
+  useEffect(() => {
+    if (textareaRef.current) {
+      Prism.highlightElement(textareaRef.current);
+    }
+  }, [markdown]);
+
   return (
     <div 
       className="flex flex-col overflow-hidden"
@@ -109,7 +105,7 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width, fo
           <textarea 
             ref={textareaRef}
             id="markdown-editor" 
-            className="absolute inset-0 w-full h-full resize-none p-2 outline-none font-mono leading-relaxed text-transparent bg-transparent caret-slate-800 dark:caret-white overflow-auto"
+            className="w-full h-full resize-none p-2 outline-none font-mono leading-relaxed text-slate-800 dark:text-slate-200 caret-slate-800 dark:caret-white bg-white dark:bg-gray-900 overflow-auto"
             style={{ fontSize: `${fontSize}px` }}
             placeholder="Type your Markdown here..."
             value={markdown}
@@ -118,13 +114,6 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width, fo
             spellCheck={false}
             wrap="off"
           />
-          <pre 
-            ref={preRef}
-            className="absolute inset-0 pointer-events-none p-2 font-mono overflow-auto"
-            style={{ fontSize: `${fontSize}px` }}
-          >
-            <code className="language-markdown">{markdown}</code>
-          </pre>
         </div>
       </div>
     </div>

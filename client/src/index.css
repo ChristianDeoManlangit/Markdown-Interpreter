@@ -260,124 +260,12 @@ pre[class*="language-"] {
 .markdown-preview {
   @apply px-8 py-6 text-slate-800 dark:text-slate-200;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-  font-size: 16px;
   line-height: 1.5;
   width: 100%;
   max-width: 980px;
   margin: 0 auto;
   word-wrap: break-word;
   overflow-y: auto;
-}
-
-.markdown-preview > * {
-  margin-top: 0;
-  margin-bottom: 16px;
-}
-
-.markdown-preview > *:last-child {
-  margin-bottom: 0 !important;
-}
-
-.markdown-preview a:not([href]) {
-  color: inherit;
-  text-decoration: none;
-}
-
-.markdown-preview .absent {
-  color: #cf222e;
-}
-
-.markdown-preview .anchor {
-  float: left;
-  padding-right: 4px;
-  margin-left: -20px;
-  line-height: 1;
-}
-
-.markdown-preview .anchor:focus {
-  outline: none;
-}
-
-.markdown-preview p,
-.markdown-preview blockquote,
-.markdown-preview ul,
-.markdown-preview ol,
-.markdown-preview dl,
-.markdown-preview table,
-.markdown-preview pre,
-.markdown-preview details {
-  margin-top: 0;
-  margin-bottom: 16px;
-}
-
-.markdown-preview hr {
-  height: .25em;
-  padding: 0;
-  margin: 24px 0;
-  background-color: #d0d7de;
-  border: 0;
-}
-
-.markdown-preview blockquote {
-  padding: 0 1em;
-  color: #57606a;
-  border-left: .25em solid #d0d7de;
-}
-
-.dark .markdown-preview blockquote {
-  color: #768390;
-  border-left-color: #373e47;
-}
-
-.markdown-preview ul,
-.markdown-preview ol {
-  padding-left: 2em;
-}
-
-.markdown-preview ul.no-list,
-.markdown-preview ol.no-list {
-  padding: 0;
-  list-style-type: none;
-}
-
-.markdown-preview ol[type="a"] {
-  list-style-type: lower-alpha;
-}
-
-.markdown-preview ol[type="A"] {
-  list-style-type: upper-alpha;
-}
-
-.markdown-preview ol[type="i"] {
-  list-style-type: lower-roman;
-}
-
-.markdown-preview ol[type="I"] {
-  list-style-type: upper-roman;
-}
-
-.markdown-preview ol[type="1"] {
-  list-style-type: decimal;
-}
-
-.markdown-preview div > ol:not([type]) {
-  list-style-type: decimal;
-}
-
-.markdown-preview ul ul,
-.markdown-preview ul ol,
-.markdown-preview ol ol,
-.markdown-preview ol ul {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.markdown-preview li > p {
-  margin-top: 16px;
-}
-
-.markdown-preview li + li {
-  margin-top: .25em;
 }
 
 .markdown-preview > *:first-child {
