@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect, useState } from "react";
 import Prism from "prismjs";
 import "prismjs/components/prism-markdown";
@@ -63,7 +62,7 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width, fo
       const indent = indentMatch ? indentMatch[1] : '';
       const listMatch = currentLine.match(/^(\s*[-*+]\s+)/);
       const newIndent = listMatch ? listMatch[1] : indent;
-      
+
       const newText = markdown.substring(0, start) + '\n' + newIndent + markdown.substring(start);
       onChange(newText);
       setTimeout(() => {
@@ -105,7 +104,7 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width, fo
           <textarea 
             ref={textareaRef}
             id="markdown-editor" 
-            className="w-full h-full resize-none p-2 outline-none font-mono leading-relaxed text-slate-800 dark:text-slate-200 caret-slate-800 dark:caret-white bg-white dark:bg-gray-900 overflow-auto"
+            className="w-full h-full resize-none p-2 outline-none font-mono leading-relaxed text-slate-800 dark:text-slate-200 caret-slate-800 dark:caret-white bg-white dark:bg-gray-900 overflow-auto prism-editor language-markup"
             style={{ fontSize: `${fontSize}px` }}
             placeholder="Type your Markdown here..."
             value={markdown}

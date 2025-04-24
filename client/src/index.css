@@ -72,8 +72,30 @@ pre[class*="language-"] {
 
 /* Light Theme */
 .prism-highlight code[class*="language-"],
-.prism-highlight pre[class*="language-"] {
+.prism-highlight pre[class*="language-"],
+.prism-editor {
   color: #24292e; /* GitHub-like text color */
+}
+
+/* HTML Tag Syntax Colors */
+.language-markup .token.tag {
+  color: #22863a; /* Green for tags */
+}
+
+.language-markup .token.attr-name {
+  color: #0550ae; /* Blue for attribute names */
+}
+
+.language-markup .token.attr-value {
+  color: #032f62; /* Dark blue for attribute values */
+}
+
+.language-markup .token.string {
+  color: #032f62; /* Dark blue for strings */
+}
+
+.language-markup .token.punctuation {
+  color: #6a737d; /* Gray for punctuation */
 }
 
 /* Token colors for light theme */
@@ -157,8 +179,30 @@ pre[class*="language-"] {
 
 /* Dark Theme */
 .dark .prism-highlight code[class*="language-"],
-.dark .prism-highlight pre[class*="language-"] {
+.dark .prism-highlight pre[class*="language-"],
+.dark .prism-editor {
   color: #e1e4e8; /* GitHub Dark text color */
+}
+
+/* Dark Theme HTML Tag Syntax Colors */
+.dark .language-markup .token.tag {
+  color: #7ee787; /* Light green for tags */
+}
+
+.dark .language-markup .token.attr-name {
+  color: #79c0ff; /* Light blue for attribute names */
+}
+
+.dark .language-markup .token.attr-value {
+  color: #a5d6ff; /* Lighter blue for attribute values */
+}
+
+.dark .language-markup .token.string {
+  color: #a5d6ff; /* Lighter blue for strings */
+}
+
+.dark .language-markup .token.punctuation {
+  color: #8b949e; /* Light gray for punctuation */
 }
 
 /* Token colors for dark theme */
