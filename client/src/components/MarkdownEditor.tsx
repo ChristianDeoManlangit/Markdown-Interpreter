@@ -33,6 +33,7 @@ const MarkdownEditor = () => {
     preview: 50,
   });
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [fontSize, setFontSize] = useState(14);
   const [isDragging, setIsDragging] = useState(false);
 
   // Handle resize when dragging the separator
@@ -132,6 +133,8 @@ const MarkdownEditor = () => {
         toggleMobileMenu={toggleMobileMenu}
         markdownContent={markdown}
         onContentLoad={setMarkdown}
+        fontSize={fontSize}
+        onFontSizeChange={setFontSize}
       />
       
       <div 
@@ -142,6 +145,7 @@ const MarkdownEditor = () => {
           markdown={markdown}
           onChange={setMarkdown}
           width={isMobile ? 100 : panelSizes.editor}
+          fontSize={fontSize}
         />
         
         {/* Draggable divider - only shown on desktop */}

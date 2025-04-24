@@ -11,9 +11,10 @@ interface EditorPanelProps {
   markdown: string;
   onChange: (text: string) => void;
   width: number;
+  fontSize?: number;
 }
 
-const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width }) => {
+const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width, fontSize = 14 }) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const lineNumbersRef = useRef<HTMLDivElement>(null);
   const [lineCount, setLineCount] = useState(1);
@@ -84,8 +85,11 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width }) 
         {/* Line Numbers */}
         <div 
           ref={lineNumbersRef}
-          className="flex-none w-12 bg-gray-100 dark:bg-gray-800 py-2 text-right text-xs text-slate-500 dark:text-slate-400 font-mono select-none overflow-y-hidden" 
+          className="flex-none w-12 bg-gray-100 dark:bg-gray-800 py-2 text-right text-slate-500 dark:text-slate-400 font-mono select-none overflow-y-hidden" 
           id="line-numbers"
+          style={{
+            fontSize: `${Math.max(fontSize - 2, 10)}px`
+          }}
         >
           {Array.from({ length: lineCount }).map((_, i) => (
             <div key={i} className="px-2">{i + 1}</div>
@@ -95,18 +99,26 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width }) 
         {/* Actual Editor */}
         <div className="flex-1 relative">
           <pre className="absolute inset-0 m-0 p-0 w-full h-full pointer-events-none prism-highlight overflow-hidden" 
-               style={{ zIndex: 1, paddingTop: "0.5rem", paddingLeft: "0.5rem" }}>
+               style={{ 
+                 zIndex: 1, 
+                 paddingTop: "0.5rem", 
+                 paddingLeft: "0.5rem",
+                 fontSize: `${fontSize}px`
+               }}>
             <code className="language-markdown">{markdown || " "}</code>
           </pre>
           <textarea 
             ref={textareaRef}
             id="markdown-editor" 
-            className="absolute inset-0 resize-none p-2 outline-none bg-transparent w-full h-full font-mono text-sm leading-relaxed text-transparent caret-slate-800 dark:caret-white"
+            className="absolute inset-0 resize-none p-2 outline-none bg-transparent w-full h-full font-mono leading-relaxed text-transparent caret-slate-800 dark:caret-white"
             placeholder="Type your Markdown here..."
             value={markdown}
             onChange={(e) => onChange(e.target.value)}
             onKeyDown={handleKeyDown}
-            style={{ caretColor: "currentColor" }}
+            style={{ 
+              caretColor: "currentColor",
+              fontSize: `${fontSize}px`
+            }}
           />
         </div>
       </div>
