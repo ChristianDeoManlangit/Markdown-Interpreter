@@ -73,8 +73,20 @@ pre[class*="language-"] {
 /* Light Theme */
 .prism-highlight code[class*="language-"],
 .prism-highlight pre[class*="language-"],
-.prism-editor {
-  color: #24292e; /* GitHub-like text color */
+.editor-highlight {
+  color: transparent;
+  z-index: 1;
+}
+
+textarea#markdown-editor {
+  color: transparent;
+  caret-color: #24292e;
+  background: transparent;
+  z-index: 2;
+}
+
+.dark textarea#markdown-editor {
+  caret-color: #e1e4e8;
 }
 
 /* HTML Tag Syntax Colors */

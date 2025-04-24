@@ -75,7 +75,12 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width, fo
 
   useEffect(() => {
     if (textareaRef.current) {
-      Prism.highlightElement(textareaRef.current);
+      const text = textareaRef.current.value;
+      const html = Prism.highlight(text, Prism.languages.markup, 'markup');
+      const highlightedDiv = document.querySelector('.editor-highlight');
+      if (highlightedDiv) {
+        highlightedDiv.innerHTML = html;
+      }
     }
   }, [markdown]);
 
@@ -101,6 +106,7 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width, fo
         </div>
 
         <div className="flex-1 relative overflow-hidden">
+          <div className="editor-highlight absolute top-0 left-0 w-full h-full p-2 pointer-events-none font-mono whitespace-pre" style={{ fontSize: `${fontSize}px` }}></div>
           <textarea 
             ref={textareaRef}
             id="markdown-editor" 
