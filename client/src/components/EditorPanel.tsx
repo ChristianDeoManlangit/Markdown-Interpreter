@@ -85,7 +85,7 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width, fo
         {/* Line Numbers */}
         <div 
           ref={lineNumbersRef}
-          className="flex-none w-12 bg-gray-100 dark:bg-gray-800 py-2 text-right text-slate-500 dark:text-slate-400 font-mono select-none overflow-y-hidden" 
+          className="flex-none w-12 bg-gray-100 dark:bg-gray-800 py-2 text-right text-slate-500 dark:text-slate-400 font-mono select-none overflow-y-auto" 
           id="line-numbers"
           style={{
             fontSize: `${Math.max(fontSize - 2, 10)}px`
@@ -97,8 +97,8 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width, fo
         </div>
         
         {/* Actual Editor */}
-        <div className="flex-1 relative">
-          <pre className="absolute inset-0 m-0 p-0 w-full h-full pointer-events-none prism-highlight overflow-hidden" 
+        <div className="flex-1 relative overflow-auto">
+          <pre className="absolute inset-0 m-0 p-0 w-full h-full pointer-events-none prism-highlight overflow-auto" 
                style={{ 
                  zIndex: 1, 
                  paddingTop: "0.5rem", 
@@ -110,13 +110,12 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width, fo
           <textarea 
             ref={textareaRef}
             id="markdown-editor" 
-            className="absolute inset-0 resize-none p-2 outline-none bg-transparent w-full h-full font-mono leading-relaxed text-transparent caret-slate-800 dark:caret-white"
+            className="absolute inset-0 resize-none p-2 outline-none bg-transparent w-full h-full font-mono leading-relaxed text-slate-800 dark:text-slate-200 caret-slate-800 dark:caret-white"
             placeholder="Type your Markdown here..."
             value={markdown}
             onChange={(e) => onChange(e.target.value)}
             onKeyDown={handleKeyDown}
             style={{ 
-              caretColor: "currentColor",
               fontSize: `${fontSize}px`
             }}
           />
