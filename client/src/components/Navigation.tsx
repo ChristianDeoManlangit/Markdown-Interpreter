@@ -7,12 +7,14 @@ interface NavigationProps {
   isMobileMenuOpen: boolean;
   toggleMobileMenu: () => void;
   markdownContent: string;
+  onContentLoad?: (content: string) => void;
 }
 
 const Navigation: React.FC<NavigationProps> = ({ 
   isMobileMenuOpen, 
   toggleMobileMenu, 
-  markdownContent 
+  markdownContent,
+  onContentLoad
 }) => {
   const { theme, setTheme } = useTheme();
   const [fileDropdownOpen, setFileDropdownOpen] = useState(false);
@@ -71,11 +73,17 @@ const Navigation: React.FC<NavigationProps> = ({
   };
 
   const handleLoadFile = () => {
-    loadFromLocalStorage();
     setFileDropdownOpen(false);
-    toast({
-      title: "File loaded",
-      description: "Content loaded from localStorage.",
+    
+    // Add an option to load from file
+    loadFromFile((content) => {
+      if (onContentLoad) {
+        onContentLoad(content);
+        toast({
+          title: "File loaded",
+          description: "Content loaded from file.",
+        });
+      }
     });
   };
 

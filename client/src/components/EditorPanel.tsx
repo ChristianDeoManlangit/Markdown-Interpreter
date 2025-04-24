@@ -1,4 +1,11 @@
 import React, { useRef, useEffect, useState } from "react";
+import Prism from 'prismjs';
+import 'prismjs/components/prism-markdown';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-python';
+import 'prismjs/components/prism-bash';
 
 interface EditorPanelProps {
   markdown: string;
@@ -11,7 +18,7 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width }) 
   const lineNumbersRef = useRef<HTMLDivElement>(null);
   const [lineCount, setLineCount] = useState(1);
 
-  // Update line numbers when markdown content changes
+  // Update line numbers and highlight syntax when markdown content changes
   useEffect(() => {
     if (markdown) {
       const lines = markdown.split('\n').length;
@@ -19,6 +26,9 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width }) 
     } else {
       setLineCount(1);
     }
+    
+    // Highlight code with Prism.js
+    Prism.highlightAll();
   }, [markdown]);
 
   // Sync scrolling between textarea and line numbers
@@ -80,14 +90,19 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width }) 
         
         {/* Actual Editor */}
         <div className="flex-1 relative">
+          <pre className="absolute inset-0 m-0 p-0 w-full h-full pointer-events-none prism-highlight overflow-hidden" 
+               style={{ zIndex: 1, paddingTop: "0.5rem", paddingLeft: "0.5rem" }}>
+            <code className="language-markdown">{markdown || " "}</code>
+          </pre>
           <textarea 
             ref={textareaRef}
             id="markdown-editor" 
-            className="absolute inset-0 resize-none p-2 outline-none bg-white dark:bg-gray-900 w-full h-full font-mono text-sm leading-relaxed"
+            className="absolute inset-0 resize-none p-2 outline-none bg-transparent w-full h-full font-mono text-sm leading-relaxed text-transparent caret-slate-800 dark:caret-white"
             placeholder="Type your Markdown here..."
             value={markdown}
             onChange={(e) => onChange(e.target.value)}
             onKeyDown={handleKeyDown}
+            style={{ caretColor: "currentColor" }}
           />
         </div>
       </div>

@@ -116,6 +116,7 @@ const MarkdownEditor = () => {
         isMobileMenuOpen={isMobileMenuOpen}
         toggleMobileMenu={toggleMobileMenu}
         markdownContent={markdown}
+        onContentLoad={setMarkdown}
       />
       
       <div className="flex-1 flex overflow-hidden" id="editor-container">
