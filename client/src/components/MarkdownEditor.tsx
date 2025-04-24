@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import EditorPanel from "@/components/EditorPanel";
 import PreviewPanel from "@/components/PreviewPanel";
+import Footer from "@/components/Footer";
 import { useMarkdown } from "@/hooks/useMarkdown";
 
 const defaultMarkdown = `# Welcome to Markdown Editor
@@ -125,7 +126,7 @@ const MarkdownEditor = () => {
   };
 
   return (
-    <>
+    <div className="flex flex-col h-screen">
       <Navigation 
         isMobileMenuOpen={isMobileMenuOpen}
         toggleMobileMenu={toggleMobileMenu}
@@ -162,7 +163,9 @@ const MarkdownEditor = () => {
           width={isMobile ? 100 : panelSizes.preview}
         />
       </div>
-    </>
+      
+      <Footer />
+    </div>
   );
 };
 
