@@ -76,10 +76,11 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width, fo
   useEffect(() => {
     if (textareaRef.current) {
       const text = textareaRef.current.value;
-      const html = Prism.highlight(text, Prism.languages.markup, 'markup');
+      const html = Prism.highlight(text, Prism.languages.markdown, 'markdown');
       const highlightedDiv = document.querySelector('.editor-highlight');
       if (highlightedDiv) {
         highlightedDiv.innerHTML = html;
+        highlightedDiv.scrollTop = textareaRef.current.scrollTop;
       }
     }
   }, [markdown]);

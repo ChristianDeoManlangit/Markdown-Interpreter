@@ -71,18 +71,26 @@ pre[class*="language-"] {
 }
 
 /* Light Theme */
-.prism-highlight code[class*="language-"],
-.prism-highlight pre[class*="language-"],
 .editor-highlight {
-  color: transparent;
+  color: inherit;
   z-index: 1;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
 }
 
 textarea#markdown-editor {
-  color: transparent;
-  caret-color: #24292e;
+  color: inherit;
   background: transparent;
   z-index: 2;
+  resize: none;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+.dark textarea#markdown-editor {
+  color: inherit;
 }
 
 .dark textarea#markdown-editor {
