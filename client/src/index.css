@@ -81,11 +81,12 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #6a737d; /* GitHub-like comment color */
+  color: #6e7781;
 }
 
-.token.punctuation {
-  color: #24292e;
+.token.punctuation,
+.token.tag.punctuation {
+  color: #24292f;
 }
 
 .token.property,
@@ -94,7 +95,7 @@ pre[class*="language-"] {
 .token.number,
 .token.constant,
 .token.symbol {
-  color: #005cc5; /* GitHub-like blue */
+  color: #0550ae;
 }
 
 .token.selector,
@@ -102,7 +103,7 @@ pre[class*="language-"] {
 .token.string,
 .token.char,
 .token.builtin {
-  color: #032f62; /* GitHub-like dark blue */
+  color: #0a3069;
 }
 
 .token.operator,
@@ -111,23 +112,35 @@ pre[class*="language-"] {
 .language-css .token.string,
 .token.variable,
 .token.inserted {
-  color: #22863a; /* GitHub-like green */
+  color: #116329;
 }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-  color: #d73a49; /* GitHub-like red */
+  color: #cf222e;
 }
 
 .token.function,
 .token.class-name {
-  color: #6f42c1; /* GitHub-like purple */
+  color: #8250df;
 }
 
 .token.regex,
 .token.important {
-  color: #e36209; /* GitHub-like orange */
+  color: #953800;
+}
+
+.token.tag {
+  color: #116329;
+}
+
+.token.attr-name {
+  color: #0550ae;
+}
+
+.token.attr-value {
+  color: #0a3069;
 }
 
 .token.deleted {
@@ -153,11 +166,12 @@ pre[class*="language-"] {
 .dark .token.prolog,
 .dark .token.doctype,
 .dark .token.cdata {
-  color: #6a737d; /* GitHub Dark comment color */
+  color: #8b949e;
 }
 
-.dark .token.punctuation {
-  color: #e1e4e8;
+.dark .token.punctuation,
+.dark .token.tag.punctuation {
+  color: #c9d1d9;
 }
 
 .dark .token.property,
@@ -166,7 +180,7 @@ pre[class*="language-"] {
 .dark .token.number,
 .dark .token.constant,
 .dark .token.symbol {
-  color: #79b8ff; /* GitHub Dark blue */
+  color: #79c0ff;
 }
 
 .dark .token.selector,
@@ -174,7 +188,7 @@ pre[class*="language-"] {
 .dark .token.string,
 .dark .token.char,
 .dark .token.builtin {
-  color: #9ecbff; /* GitHub Dark light blue */
+  color: #a5d6ff;
 }
 
 .dark .token.operator,
@@ -183,23 +197,35 @@ pre[class*="language-"] {
 .dark .language-css .token.string,
 .dark .token.variable,
 .dark .token.inserted {
-  color: #85e89d; /* GitHub Dark green */
+  color: #7ee787;
 }
 
 .dark .token.atrule,
 .dark .token.attr-value,
 .dark .token.keyword {
-  color: #f97583; /* GitHub Dark red */
+  color: #ff7b72;
 }
 
 .dark .token.function,
 .dark .token.class-name {
-  color: #b392f0; /* GitHub Dark purple */
+  color: #d2a8ff;
 }
 
 .dark .token.regex,
 .dark .token.important {
-  color: #ffab70; /* GitHub Dark orange */
+  color: #ffa657;
+}
+
+.dark .token.tag {
+  color: #7ee787;
+}
+
+.dark .token.attr-name {
+  color: #79c0ff;
+}
+
+.dark .token.attr-value {
+  color: #a5d6ff;
 }
 
 .dark .token.deleted {
