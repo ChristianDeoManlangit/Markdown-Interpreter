@@ -76,14 +76,23 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width, fo
   useEffect(() => {
     if (textareaRef.current) {
       const text = textareaRef.current.value;
-      const html = Prism.highlight(text, Prism.languages.markdown, 'markdown');
-      const highlightedDiv = document.querySelector('.editor-highlight');
-      if (highlightedDiv) {
-        highlightedDiv.innerHTML = html;
+      const html = Prism.highlight(text || '', Prism.languages.markdown, 'markdown');
+      const highlightedDiv = textareaRef.current.parentElement?.querySelector('.editor-highlight');
+      if (highlightedDiv && highlightedDiv instanceof HTMLElement) {
+        highlightedDiv.innerHTML = html + '\n';
         highlightedDiv.scrollTop = textareaRef.current.scrollTop;
+        highlightedDiv.scrollLeft = textareaRef.current.scrollLeft;
       }
     }
   }, [markdown]);
+
+  const handleScroll = (e: React.UIEvent<HTMLTextAreaElement>) => {
+    const highlightedDiv = e.currentTarget.parentElement?.querySelector('.editor-highlight');
+    if (highlightedDiv && highlightedDiv instanceof HTMLElement) {
+      highlightedDiv.scrollTop = e.currentTarget.scrollTop;
+      highlightedDiv.scrollLeft = e.currentTarget.scrollLeft;
+    }
+  };
 
   return (
     <div 
@@ -117,6 +126,7 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width, fo
             value={markdown}
             onChange={(e) => onChange(e.target.value)}
             onKeyDown={handleKeyDown}
+            onScroll={handleScroll}
             spellCheck={false}
             wrap="off"
           />
