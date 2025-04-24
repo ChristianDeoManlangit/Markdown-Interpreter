@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect, useState } from "react";
 import Prism from "prismjs";
 import "prismjs/components/prism-markdown";
@@ -62,7 +63,7 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width, fo
       const indent = indentMatch ? indentMatch[1] : '';
       const listMatch = currentLine.match(/^(\s*[-*+]\s+)/);
       const newIndent = listMatch ? listMatch[1] : indent;
-
+      
       const newText = markdown.substring(0, start) + '\n' + newIndent + markdown.substring(start);
       onChange(newText);
       setTimeout(() => {
@@ -75,24 +76,9 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width, fo
 
   useEffect(() => {
     if (textareaRef.current) {
-      const text = textareaRef.current.value;
-      const html = Prism.highlight(text || '', Prism.languages.markdown, 'markdown');
-      const highlightedDiv = textareaRef.current.parentElement?.querySelector('.editor-highlight');
-      if (highlightedDiv && highlightedDiv instanceof HTMLElement) {
-        highlightedDiv.innerHTML = html + '\n';
-        highlightedDiv.scrollTop = textareaRef.current.scrollTop;
-        highlightedDiv.scrollLeft = textareaRef.current.scrollLeft;
-      }
+      Prism.highlightElement(textareaRef.current);
     }
   }, [markdown]);
-
-  const handleScroll = (e: React.UIEvent<HTMLTextAreaElement>) => {
-    const highlightedDiv = e.currentTarget.parentElement?.querySelector('.editor-highlight');
-    if (highlightedDiv && highlightedDiv instanceof HTMLElement) {
-      highlightedDiv.scrollTop = e.currentTarget.scrollTop;
-      highlightedDiv.scrollLeft = e.currentTarget.scrollLeft;
-    }
-  };
 
   return (
     <div 
@@ -116,17 +102,15 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width, fo
         </div>
 
         <div className="flex-1 relative overflow-hidden">
-          <div className="editor-highlight absolute top-0 left-0 right-0 bottom-0 p-2 pointer-events-none font-mono overflow-auto whitespace-pre-wrap break-words" style={{ fontSize: `${fontSize}px`, lineHeight: '1.5' }}></div>
           <textarea 
             ref={textareaRef}
             id="markdown-editor" 
-            className="w-full h-full resize-none p-2 outline-none font-mono leading-relaxed bg-transparent overflow-auto relative z-10"
-            style={{ fontSize: `${fontSize}px`, lineHeight: '1.5', color: 'inherit' }}
+            className="w-full h-full resize-none p-2 outline-none font-mono leading-relaxed text-slate-800 dark:text-slate-200 caret-slate-800 dark:caret-white bg-white dark:bg-gray-900 overflow-auto"
+            style={{ fontSize: `${fontSize}px` }}
             placeholder="Type your Markdown here..."
             value={markdown}
             onChange={(e) => onChange(e.target.value)}
             onKeyDown={handleKeyDown}
-            onScroll={handleScroll}
             spellCheck={false}
             wrap="off"
           />
