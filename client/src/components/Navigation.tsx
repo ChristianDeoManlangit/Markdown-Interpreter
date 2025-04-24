@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useTheme } from "@/hooks/useTheme";
-import { saveToLocalStorage, loadFromLocalStorage, downloadMarkdown, downloadZip, createNewFile } from "@/lib/fileOperations";
+import { saveToLocalStorage, loadFromLocalStorage, loadFromFile, downloadMarkdown, downloadZip, createNewFile } from "@/lib/fileOperations";
 import { useToast } from "@/hooks/use-toast";
 
 interface NavigationProps {

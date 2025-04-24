@@ -47,6 +47,43 @@ export function loadFromLocalStorage(): string | null {
   }
 }
 
+// Load content from a file
+export function loadFromFile(callback: (content: string) => void): void {
+  try {
+    // Create a file input element
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = '.md';
+    fileInput.style.display = 'none';
+    document.body.appendChild(fileInput);
+
+    // Handle file selection
+    fileInput.onchange = (event) => {
+      const target = event.target as HTMLInputElement;
+      const file = target.files?.[0];
+      
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const content = e.target?.result as string;
+          if (content) {
+            callback(content);
+          }
+          document.body.removeChild(fileInput);
+        };
+        reader.readAsText(file);
+      } else {
+        document.body.removeChild(fileInput);
+      }
+    };
+    
+    // Trigger file selection dialog
+    fileInput.click();
+  } catch (error) {
+    console.error("Error loading from file:", error);
+  }
+}
+
 // Download markdown content as a .md file
 export function downloadMarkdown(content: string): void {
   try {
