@@ -1,0 +1,52 @@
+
+/* Markdown Preview Styles */
+.markdown-preview {
+    @apply prose prose-sm sm:prose lg:prose-lg dark:prose-invert max-w-none;
+}
+
+.markdown-preview h1 {
+    @apply text-2xl font-semibold border-b border-gray-200 dark:border-gray-700 pb-2 mb-4 mt-0;
+}
+
+.markdown-preview h2 {
+    @apply text-xl font-semibold border-b border-gray-200 dark:border-gray-700 pb-2 mt-6 mb-3;
+}
+
+.markdown-preview h3 {
+    @apply text-lg font-semibold mt-4 mb-2;
+}
+
+.markdown-preview p {
+    @apply mb-4 leading-relaxed;
+}
+
+.markdown-preview ul,
+.markdown-preview ol {
+    @apply mb-4 pl-6;
+    display: block;
+}
+
+.markdown-preview ul {
+    @apply list-disc;
+}
+
+.markdown-preview ol {
+    @apply list-decimal;
+}
+
+.markdown-preview code {
+    @apply font-mono text-sm bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded;
+}
+
+.markdown-preview pre {
+    @apply bg-gray-100 dark:bg-gray-800 p-4 rounded-md my-4 overflow-x-auto;
+}
+
+.markdown-preview a {
+    @apply text-blue-500 hover:underline;
+}
+
+/* Dark mode */
+.dark {
+    @apply bg-gray-900 text-white;
+}
