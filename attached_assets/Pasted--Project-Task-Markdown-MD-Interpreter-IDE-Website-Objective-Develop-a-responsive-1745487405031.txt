@@ -1,0 +1,59 @@
+### 📌 Project Task: Markdown (MD) Interpreter/IDE Website
+
+**Objective:**  
+Develop a responsive Markdown Interpreter/IDE web application based on the provided reference image. The application must support live Markdown rendering, file handling, and a theme toggle — all optimized for both desktop and mobile interfaces.
+
+---
+
+### 🛠️ Tech Stack Requirements
+- **HTML**
+- **Tailwind CSS**
+- **JavaScript (Vanilla)**
+
+---
+
+### 🧩 Functional & UI Requirements
+
+1. **UI Design Reference**  
+   - Use the **attached image** as the foundation for the layout.  
+   - Support two interface modes:  
+     - **Desktop View**
+     - **Mobile View** (hamburger-style menu for navigation)
+
+2. **Live Markdown Preview**  
+   - Implement real-time rendering of Markdown content in the **output tab** as the user types in the **editor tab**.
+
+3. **Theme Toggle**  
+   - Include a switch between **Light Mode** and **Dark Mode**.
+   - Dark mode must apply to both the **editor** and **output** areas (preferably styled similar to **GitHub's dark theme**).
+
+4. **Editor Design**  
+   - Incorporate a **line number gutter** alongside the Markdown editor.
+   - **Take inspiration from CodePen’s code editor UI** — aim for a clean, modern, and intuitive editing experience.
+
+5. **Navigation Bar (Desktop View)**  
+   Include the following buttons:
+   - **File** (Dropdown Menu)  
+     - New File (reset content)  
+     - Save  
+     - Load  
+   - **Download** (Dropdown Menu)  
+     - Download as `.md`  
+     - Download as `.zip`  
+   - **Save**  
+     - Saves content to localStorage (retained after page reload)
+   - **Theme Toggle**  
+     - Switches between light and dark modes  
+   > *Note:* Each dropdown item must display an icon followed by the text label.
+
+6. **Mobile Navigation (Hamburger Menu)**  
+   - Collapse the navigation bar into a **hamburger icon** on mobile.
+   - Tapping it should expand a menu with the same options as the desktop view.
+
+7. **Adjustable Tabs**  
+   - Make the divider between the **editor** and **preview** **draggable/resizable**.
+   - Allow users to adjust the panel sizes, on both desktop and mobile devices.
+
+8. **Responsiveness**  
+   - Ensure smooth adaptation across various screen sizes and orientations.
+   - Use responsive design principles for seamless performance on all devices.
