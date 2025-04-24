@@ -31,6 +31,7 @@ const MarkdownEditor = () => {
     editor: 50, // percentage
     preview: 50,
   });
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [isDragging, setIsDragging] = useState(false);
 
   // Handle resize when dragging the separator
@@ -106,6 +107,19 @@ const MarkdownEditor = () => {
     };
   }, [isDragging]);
 
+  // Check for window resize to update mobile state
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -119,23 +133,33 @@ const MarkdownEditor = () => {
         onContentLoad={setMarkdown}
       />
       
-      <div className="flex-1 flex overflow-hidden" id="editor-container">
+      <div 
+        className={`flex-1 ${isMobile ? 'flex flex-col' : 'flex'} overflow-hidden`} 
+        id="editor-container"
+      >
         <EditorPanel 
           markdown={markdown}
           onChange={setMarkdown}
-          width={panelSizes.editor}
+          width={isMobile ? 100 : panelSizes.editor}
         />
         
-        {/* Draggable divider */}
-        <div 
-          className={`w-1 bg-gray-200 dark:bg-gray-700 hover:bg-blue-500 dark:hover:bg-blue-600 cursor-col-resize z-10 ${isDragging ? 'bg-blue-500 dark:bg-blue-600' : ''}`}
-          onMouseDown={handleMouseDown}
-          onTouchStart={handleTouchStart}
-        ></div>
+        {/* Draggable divider - only shown on desktop */}
+        {!isMobile && (
+          <div 
+            className={`w-1 bg-gray-200 dark:bg-gray-700 hover:bg-blue-500 dark:hover:bg-blue-600 cursor-col-resize z-10 ${isDragging ? 'bg-blue-500 dark:bg-blue-600' : ''}`}
+            onMouseDown={handleMouseDown}
+            onTouchStart={handleTouchStart}
+          ></div>
+        )}
+        
+        {/* Mobile divider - horizontal */}
+        {isMobile && (
+          <div className="h-1 w-full bg-gray-200 dark:bg-gray-700"></div>
+        )}
         
         <PreviewPanel 
           html={html}
-          width={panelSizes.preview}
+          width={isMobile ? 100 : panelSizes.preview}
         />
       </div>
     </>

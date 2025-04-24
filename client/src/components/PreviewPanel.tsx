@@ -9,10 +9,13 @@ const PreviewPanel: React.FC<PreviewPanelProps> = ({ html, width }) => {
   return (
     <div 
       className="overflow-auto bg-white dark:bg-gray-900"
-      style={{ width: `${width}%` }}
+      style={{ 
+        width: `${width}%`,
+        height: width === 100 ? '50vh' : '100%' // 50vh height on mobile (when width is 100%)
+      }}
     >
       <div 
-        className="p-6 max-w-none prose dark:prose-invert prose-sm sm:prose-base lg:prose-lg h-full"
+        className="markdown-preview max-w-none h-full"
         dangerouslySetInnerHTML={{ __html: html }}
       />
     </div>

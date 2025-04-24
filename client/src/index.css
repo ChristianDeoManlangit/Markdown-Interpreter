@@ -57,3 +57,252 @@
   }
 }
 
+/* Prism Syntax Highlighting */
+code[class*="language-"],
+pre[class*="language-"] {
+  @apply font-mono text-sm leading-relaxed;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  tab-size: 2;
+  hyphens: none;
+}
+
+/* Light Theme */
+.prism-highlight code[class*="language-"],
+.prism-highlight pre[class*="language-"] {
+  color: #24292e; /* GitHub-like text color */
+}
+
+/* Token colors for light theme */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6a737d; /* GitHub-like comment color */
+}
+
+.token.punctuation {
+  color: #24292e;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol {
+  color: #005cc5; /* GitHub-like blue */
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin {
+  color: #032f62; /* GitHub-like dark blue */
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.token.variable,
+.token.inserted {
+  color: #22863a; /* GitHub-like green */
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #d73a49; /* GitHub-like red */
+}
+
+.token.function,
+.token.class-name {
+  color: #6f42c1; /* GitHub-like purple */
+}
+
+.token.regex,
+.token.important {
+  color: #e36209; /* GitHub-like orange */
+}
+
+.token.deleted {
+  color: #b31d28; /* GitHub-like red for deletions */
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+
+/* Dark Theme */
+.dark .prism-highlight code[class*="language-"],
+.dark .prism-highlight pre[class*="language-"] {
+  color: #e1e4e8; /* GitHub Dark text color */
+}
+
+/* Token colors for dark theme */
+.dark .token.comment,
+.dark .token.prolog,
+.dark .token.doctype,
+.dark .token.cdata {
+  color: #6a737d; /* GitHub Dark comment color */
+}
+
+.dark .token.punctuation {
+  color: #e1e4e8;
+}
+
+.dark .token.property,
+.dark .token.tag,
+.dark .token.boolean,
+.dark .token.number,
+.dark .token.constant,
+.dark .token.symbol {
+  color: #79b8ff; /* GitHub Dark blue */
+}
+
+.dark .token.selector,
+.dark .token.attr-name,
+.dark .token.string,
+.dark .token.char,
+.dark .token.builtin {
+  color: #9ecbff; /* GitHub Dark light blue */
+}
+
+.dark .token.operator,
+.dark .token.entity,
+.dark .token.url,
+.dark .language-css .token.string,
+.dark .token.variable,
+.dark .token.inserted {
+  color: #85e89d; /* GitHub Dark green */
+}
+
+.dark .token.atrule,
+.dark .token.attr-value,
+.dark .token.keyword {
+  color: #f97583; /* GitHub Dark red */
+}
+
+.dark .token.function,
+.dark .token.class-name {
+  color: #b392f0; /* GitHub Dark purple */
+}
+
+.dark .token.regex,
+.dark .token.important {
+  color: #ffab70; /* GitHub Dark orange */
+}
+
+.dark .token.deleted {
+  color: #ff7b72; /* GitHub Dark red for deletions */
+}
+
+/* Add custom backgrounds for the editor and preview */
+.bg-editor-light {
+  background-color: #ffffff;
+}
+
+.bg-editor-dark {
+  background-color: #0d1117;
+}
+
+/* Preview panel styling for better GitHub-like appearance */
+.markdown-preview {
+  @apply px-5 py-5 h-full overflow-auto;
+}
+
+.markdown-preview h1 {
+  @apply text-3xl font-bold border-b border-gray-200 dark:border-gray-700 pb-2 mb-5 mt-0;
+}
+
+.markdown-preview h2 {
+  @apply text-2xl font-bold border-b border-gray-200 dark:border-gray-700 pb-2 mt-5 mb-3;
+}
+
+.markdown-preview h3 {
+  @apply text-xl font-bold mt-4 mb-2;
+}
+
+.markdown-preview h4 {
+  @apply text-lg font-bold mt-4 mb-2;
+}
+
+.markdown-preview h5 {
+  @apply font-bold mt-4 mb-2;
+}
+
+.markdown-preview h6 {
+  @apply font-bold text-sm mt-4 mb-2;
+}
+
+.markdown-preview p {
+  @apply my-3 leading-relaxed;
+}
+
+.markdown-preview ul,
+.markdown-preview ol {
+  @apply my-3 pl-8;
+}
+
+.markdown-preview ul {
+  @apply list-disc;
+}
+
+.markdown-preview ol {
+  @apply list-decimal;
+}
+
+.markdown-preview li {
+  @apply mb-1;
+}
+
+.markdown-preview blockquote {
+  @apply border-l-4 border-gray-300 dark:border-gray-600 pl-4 py-1 my-3 text-gray-700 dark:text-gray-300;
+}
+
+.markdown-preview pre {
+  @apply bg-gray-100 dark:bg-gray-800 p-4 rounded-md my-4 overflow-x-auto;
+}
+
+.markdown-preview code {
+  @apply font-mono text-sm bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded;
+}
+
+.markdown-preview pre code {
+  @apply bg-transparent p-0 text-sm;
+}
+
+.markdown-preview img {
+  @apply max-w-full my-4 rounded-md;
+}
+
+.markdown-preview table {
+  @apply border-collapse my-4 w-full;
+}
+
+.markdown-preview table th,
+.markdown-preview table td {
+  @apply border border-gray-300 dark:border-gray-700 px-4 py-2;
+}
+
+.markdown-preview table th {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+.markdown-preview hr {
+  @apply my-6 border-t border-gray-300 dark:border-gray-700;
+}
+
+.markdown-preview a {
+  @apply text-blue-500 hover:underline;
+}
+

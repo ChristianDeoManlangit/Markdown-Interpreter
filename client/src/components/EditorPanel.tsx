@@ -72,8 +72,12 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width }) 
 
   return (
     <div 
-      className="flex flex-col border-r border-gray-200 dark:border-gray-700 overflow-hidden" 
-      style={{ width: `${width}%` }}
+      className="flex flex-col overflow-hidden"
+      style={{ 
+        width: `${width}%`,
+        height: width === 100 ? '50vh' : '100%', // 50vh height on mobile (when width is 100%)
+        borderRight: width !== 100 ? '1px solid var(--border-color, #e5e7eb)' : 'none' // Only show right border on desktop
+      }}
       id="editor-panel"
     >
       <div className="flex-1 flex overflow-hidden bg-editor-light dark:bg-editor-dark transition-colors duration-200">
