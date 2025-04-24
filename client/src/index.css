@@ -216,13 +216,55 @@ pre[class*="language-"] {
 }
 
 /* Preview panel styling for better GitHub-like appearance */
+/* Markdown Editor Syntax Highlighting */
+.markdown-syntax {
+  color: #24292e;
+}
+
+.dark .markdown-syntax {
+  color: #e1e4e8;
+}
+
+/* Headers */
+.markdown-syntax h1, .markdown-syntax h2, .markdown-syntax h3,
+.markdown-syntax h4, .markdown-syntax h5, .markdown-syntax h6 {
+  color: #0366d6;
+}
+
+.dark .markdown-syntax h1, .dark .markdown-syntax h2, .dark .markdown-syntax h3,
+.dark .markdown-syntax h4, .dark .markdown-syntax h5, .dark .markdown-syntax h6 {
+  color: #58a6ff;
+}
+
+/* Links */
+.markdown-syntax a {
+  color: #0366d6;
+}
+
+.dark .markdown-syntax a {
+  color: #58a6ff;
+}
+
+/* Code blocks */
+.markdown-syntax code {
+  color: #24292e;
+  background: #f6f8fa;
+}
+
+.dark .markdown-syntax code {
+  color: #e1e4e8;
+  background: #1f2428;
+}
+
+/* Preview Panel Styling */
 .markdown-preview {
-  @apply px-5 py-5 h-full overflow-auto text-slate-800 dark:text-slate-200;
+  @apply px-5 py-5 text-slate-800 dark:text-slate-200;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   line-height: 1.6;
   word-wrap: break-word;
-  max-width: 980px;
-  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .markdown-preview h1 {
