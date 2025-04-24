@@ -1,8 +1,8 @@
 
 import React, { useRef, useEffect, useState } from "react";
-import { Prism as SyntaxHighlighter } from 'react-prismjs';
-import 'prismjs/components/prism-markdown';
-import 'prismjs/components/prism-markup';
+import Prism from "prismjs";
+import "prismjs/components/prism-markdown";
+import "prismjs/components/prism-markup";
 
 interface EditorPanelProps {
   markdown: string;
@@ -73,6 +73,12 @@ const EditorPanel: React.FC<EditorPanelProps> = ({ markdown, onChange, width, fo
       }, 0);
     }
   };
+
+  useEffect(() => {
+    if (textareaRef.current) {
+      Prism.highlightElement(textareaRef.current);
+    }
+  }, [markdown]);
 
   return (
     <div 
