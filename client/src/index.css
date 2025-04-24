@@ -72,30 +72,28 @@ pre[class*="language-"] {
 
 /* Light Theme */
 .editor-highlight {
-  color: #24292e;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  color: inherit;
   z-index: 1;
-  white-space: pre !important;
-  pointer-events: none;
-  overflow: auto;
+  tab-size: 2;
+  font-family: monospace;
 }
 
 textarea#markdown-editor {
-  color: transparent;
-  caret-color: #24292e;
-  background: transparent;
+  color: inherit;
+  z-index: 2;
   position: absolute;
   top: 0;
   left: 0;
+  font-family: monospace;
+  tab-size: 2;
+  background: transparent !important;
+}
+
+.editor-container {
+  position: relative;
   width: 100%;
   height: 100%;
-  z-index: 2;
-  resize: none;
-  white-space: pre !important;
+  overflow: hidden;
 }
 
 .dark .editor-highlight {
@@ -526,4 +524,3 @@ textarea#markdown-editor {
 .markdown-preview ul.contains-task-list li.task-list-item input[type="checkbox"] {
   @apply mr-2;
 }
-
